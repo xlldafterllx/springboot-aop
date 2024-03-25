@@ -11,4 +11,9 @@ public class GreetingServiceImpl implements GreetingService {
         System.out.println("\n" + greeting);
         return greeting;
     }
+
+    @Override
+    public String sayHelloError(String person, String phrase) {
+        throw new RuntimeException("Error de prueba");
+    }
 }
