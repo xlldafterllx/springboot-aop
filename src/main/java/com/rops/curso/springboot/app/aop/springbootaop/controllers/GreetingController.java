@@ -3,8 +3,11 @@ package com.rops.curso.springboot.app.aop.springbootaop.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rops.curso.springboot.app.aop.springbootaop.services.GreetingService;
+
 import java.util.Collections;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,8 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping("/app")
 public class GreetingController {
 
-    @GetMapping("/gretting")
-    public ResponseEntity<?> gretting() {
-        return ResponseEntity.ok(Collections.singletonMap("gretting", null));
+    @Autowired
+    private GreetingService greetingService;
+
+    @GetMapping("/greeting")
+    public ResponseEntity<?> greeting() {
+        return ResponseEntity.ok(Collections.singletonMap("greeting", greetingService.sayHello("Analía", "Hola, Cómo estas?")));
     }    
 }
